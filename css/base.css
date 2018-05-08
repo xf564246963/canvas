@@ -27,7 +27,7 @@ body{
 
 .section-bg{
     z-index: 2;
-    background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/2.png") no-repeat center center;
+    background: url("https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/2.png") no-repeat center center;
     background-size: 100% 100%;
     width: 100%;
     height: 100%;
@@ -97,12 +97,12 @@ body{
 
 
 /*.page1-bg{*/
-    /*background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/1.png") no-repeat center center/100% 100%;*/
+    /*background: url("https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/1.png") no-repeat center center/100% 100%;*/
 /*}*/
 
 .page1-flower{
     z-index: 5;
-    background: url(http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/1-flower.png) no-repeat center center;
+    background: url(https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/1-flower.png) no-repeat center center;
     width: 300px;
     height: 300px;
 }
@@ -213,7 +213,7 @@ body{
 }
 
 .page2-bg {
-    background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/2-bg.png") no-repeat 35% center/auto 100%;
+    background: url("https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/2-bg.png") no-repeat 35% center/auto 100%;
 }
 
 .page2-month {
@@ -302,7 +302,7 @@ body{
 }
 
 /*.page3-bg{*/
-    /*background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/3.png") no-repeat center center;*/
+    /*background: url("https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/3.png") no-repeat center center;*/
 /*}*/
 
 .page3-man{
@@ -401,7 +401,7 @@ body{
 }
 
 /*.page4-bg{*/
-    /*background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/4.png") no-repeat center center;*/
+    /*background: url("https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/4.png") no-repeat center center;*/
 /*}*/
 
 .page4-up{
@@ -457,7 +457,7 @@ body{
 }
 
 /*.page5-bg{*/
-    /*background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/5.png") no-repeat center center;*/
+    /*background: url("https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/5.png") no-repeat center center;*/
 /*}*/
 
 .page5-up{
@@ -525,7 +525,7 @@ body{
 }
 
 /*.page6-bg{*/
-    /*background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/6.png") no-repeat center center;*/
+    /*background: url("https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/6.png") no-repeat center center;*/
 /*}*/
 
 .page6-up{
@@ -597,7 +597,7 @@ body{
 }
 
 /*.page7-bg{*/
-    /*background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/7.png") no-repeat center center;*/
+    /*background: url("https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/7.png") no-repeat center center;*/
 /*}*/
 
 .page8-title{
@@ -786,7 +786,7 @@ div.page9-address{
     left: 0;
     width: 47px;
     height: 17px;
-    background: url(http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/sy.png) no-repeat;
+    background: url(https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/sy.png) no-repeat;
     background-size: 100%;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
@@ -823,7 +823,7 @@ div.page9-address{
 
 .bottom-icon{
     z-index: 10;
-    background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/up.png") no-repeat center 0;
+    background: url("https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/up.png") no-repeat center 0;
     background-size: 100% auto;
     width: 10%;
     height: 6%;

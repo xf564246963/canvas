@@ -61,7 +61,7 @@
         $(function () {
 
             for(var j=0; j<img_list.length; j++){
-                img_list[j] = 'http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/'+img_list[j]+".png";
+                img_list[j] = 'https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/'+img_list[j]+".png";
             }
 
             loadImg(img_list,function (o) {
@@ -88,7 +88,7 @@
             LEAFS.init();
             var imageObject = {};
             imageObject.imageObject = new Image;
-            imageObject.imageObject.src = "http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/7-bg.png";
+            imageObject.imageObject.src = "https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/7-bg.png";
             imageObject.imageObject.onload = function(){
                 imageObject.imgClipData = {};
                 imgResponseAsBg(imageObject);
@@ -142,7 +142,7 @@
                 if($(".page2-bg>.center-obj>svg")){
                     $(".page2-bg>.center-obj>svg").remove();
                 }
-                $(".page2-bg>.center-obj").prepend('<svg class="page2-svg" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="none" x="0px" y="0px" width="320px" height="200px" viewBox="0 0 320 200"> <g> <animateMotion path="M 30 141 Q 59.35 116.65 112.6 86.4 139.25 71.25 160 61 L 164 59.4Q 169 57.5 174 56.25 190 52.25 200 56 204 57.5 212.65 60.65 220.35 63.8 226.75 67.9 244.1 78.95 261 103" begin="0s" dur="5s" rotate="auto-reverse" fill="freeze"/> <image href="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/train.png" height="40" width="40"/> </g> <path stroke="#ffffff" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" fill="none" d="M 30 141 Q 59.35 116.65 112.6 86.4 139.25 71.25 160 61 L 164 59.4Q 169 57.5 174 56.25 190 52.25 200 56 204 57.5 212.65 60.65 220.35 63.8 226.75 67.9 244.1 78.95 261 103"/> <text font-family="weddingFont" font-size="12" fill="#fff" y="160" x="25" opacity="0">孝感 <animate attributeName="opacity" from="0" to="1" begin="0s" dur="2s" fill="freeze"/> </text> <text font-family="weddingFont" font-size="12" fill="#fff" y="80" x="165" opacity="0">合肥 <animate attributeName="opacity" from="0" to="1" begin="2s" dur="1.5s" fill="freeze"/> </text> <text font-family="weddingFont" font-size="12" fill="#fff" y="125" x="260" opacity="0">上海 <animate attributeName="opacity" from="0" to="1" begin="3.5s" dur="1.5s" fill="freeze"/></text></svg>')
+                $(".page2-bg>.center-obj").prepend('<svg class="page2-svg" xmlns="https://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="none" x="0px" y="0px" width="320px" height="200px" viewBox="0 0 320 200"> <g> <animateMotion path="M 30 141 Q 59.35 116.65 112.6 86.4 139.25 71.25 160 61 L 164 59.4Q 169 57.5 174 56.25 190 52.25 200 56 204 57.5 212.65 60.65 220.35 63.8 226.75 67.9 244.1 78.95 261 103" begin="0s" dur="5s" rotate="auto-reverse" fill="freeze"/> <image href="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/train.png" height="40" width="40"/> </g> <path stroke="#ffffff" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" fill="none" d="M 30 141 Q 59.35 116.65 112.6 86.4 139.25 71.25 160 61 L 164 59.4Q 169 57.5 174 56.25 190 52.25 200 56 204 57.5 212.65 60.65 220.35 63.8 226.75 67.9 244.1 78.95 261 103"/> <text font-family="weddingFont" font-size="12" fill="#fff" y="160" x="25" opacity="0">孝感 <animate attributeName="opacity" from="0" to="1" begin="0s" dur="2s" fill="freeze"/> </text> <text font-family="weddingFont" font-size="12" fill="#fff" y="80" x="165" opacity="0">合肥 <animate attributeName="opacity" from="0" to="1" begin="2s" dur="1.5s" fill="freeze"/> </text> <text font-family="weddingFont" font-size="12" fill="#fff" y="125" x="260" opacity="0">上海 <animate attributeName="opacity" from="0" to="1" begin="3.5s" dur="1.5s" fill="freeze"/></text></svg>')
 //                var path = document.querySelector('path');
 //                var length = path.getTotalLength();
 //                $("path").css("stroke-dasharray",length);
@@ -215,7 +215,7 @@
 
 
             $.ajax({
-                url:"http://118.31.238.116:8080/Demo/bestWishToXiongfengAndYupan",
+                url:"https://118.31.238.116:8080/Demo/bestWishToXiongfengAndYupan",
                 contentType:"application/json",
                 async:true,
                 data:JSON.stringify({
@@ -267,7 +267,7 @@
         $('body').removeClass("body-hide2");
 
         $.ajax({
-            url:"http://118.31.238.116:8080/Demo/allBestWishToXiongfengAndYupan",
+            url:"https://118.31.238.116:8080/Demo/allBestWishToXiongfengAndYupan",
             contentType:"application/json",
             async:true,
             type:"POST",
@@ -297,7 +297,7 @@
                 <div class="page1-title backwards">Our Wedding Day</div>
                 <div class="page1-flower center both">
                 </div>
-                <img class="page1-cover center both" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/1-cover.png" alt=""/>
+                <img class="page1-cover center both" src="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/1-cover.png" alt=""/>
                 <div class="page1-date backwards">2018.05.20</div>
                 <div class="page1-name backwards">熊峰<span>❤</span>余盼</div>
                 <div class="page1-content backwards">我们结婚了</div>
@@ -310,8 +310,8 @@
             <div class="center-obj">
                 <div class="page2-context">
                 </div>
-                <img src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/heart-1.png" class="page-2-heart-1 page-2-heart-1-jump backwards" alt=""/>
-                <img src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/heart-4.png" class="page-2-heart-2 page-2-heart-2-jump backwards" alt=""/>
+                <img src="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/heart-1.png" class="page-2-heart-1 page-2-heart-1-jump backwards" alt=""/>
+                <img src="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/heart-4.png" class="page-2-heart-2 page-2-heart-2-jump backwards" alt=""/>
             </div>
         </div>
         <div class="bottom-icon fadeInUp animate-1s infinite"></div>
@@ -331,8 +331,8 @@
                     <div class="animate-05 page3-fadeIn forwards">青</div>
                     <div class="animate-05 page3-fadeIn forwards">春</div>
                 </div>
-                <img src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/3-man.png" alt="" class="page3-man page3-fadeIn both"/>
-                <img src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/3-woman.png" alt="" class="page3-woman page3-fadeIn both"/>
+                <img src="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/3-man.png" alt="" class="page3-man page3-fadeIn both"/>
+                <img src="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/3-woman.png" alt="" class="page3-woman page3-fadeIn both"/>
             </div>
         </div>
         <div class="bottom-icon fadeInUp animate-1s infinite"></div>
@@ -340,9 +340,9 @@
     <div class="section" id="section4">
         <div class="section-bg page4-bg" >
             <!--<div class="center-obj" >-->
-                <img class="page4-up both" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/4-up.png"/>
+                <img class="page4-up both" src="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/4-up.png"/>
                 <div class="page4-text both">最美不过青春年少时<br/>遇到你</div>
-                <img class="page4-down both" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/4-down.png" />
+                <img class="page4-down both" src="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/4-down.png" />
             <!--</div>-->
         </div>
         <div class="bottom-icon fadeInUp animate-1s infinite"></div>
@@ -350,10 +350,10 @@
     <div class="section" id="section5">
         <div class="section-bg page5-bg">
             <!--<div class="center-obj">-->
-            <img class="page5-up page5-flip forwards" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/5-up.png"/>
+            <img class="page5-up page5-flip forwards" src="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/5-up.png"/>
             <div class="page5-text both">人生之旅 有你处处是风景</div>
-            <img class="page5-left page5-flip forwards" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/5-left.png"/>
-            <img class="page5-right page5-flip forwards"src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/5-right.png"/>
+            <img class="page5-left page5-flip forwards" src="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/5-left.png"/>
+            <img class="page5-right page5-flip forwards"src="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/5-right.png"/>
             <!--</div>-->
         </div>
         <div class="bottom-icon fadeInUp animate-1s infinite"></div>
@@ -361,12 +361,12 @@
     <div class="section" id="section6">
         <div class="section-bg page6-bg">
             <!--<div class="center-obj">-->
-            <img class="page6-up both" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/6-up.png"/>
+            <img class="page6-up both" src="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/6-up.png"/>
             <div class="page6-text">
                 <div class="backwards">似<br/>水<br/>流<br/>年<br/>，<br/>&nbsp<br/>&nbsp<br/>&nbsp<br/>&nbsp</div>
                 <div class="backwards">带<br/>不<br/>走<br/>我<br/>们<br/>的<br/>芳<br/>华</div>
             </div>
-            <img class="page6-right both"src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/6-right.png"/>
+            <img class="page6-right both"src="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/6-right.png"/>
             <!--</div>-->
         </div>
         <div class="bottom-icon fadeInUp animate-1s infinite"></div>
@@ -383,7 +383,7 @@
         <div class="section-bg">
             <div class="center-obj">
                 <div class="page8-title">Say to Us</div>
-                <img class="page8-we backwards" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/8-we.png"/>
+                <img class="page8-we backwards" src="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/8-we.png"/>
                 <input class="page8-input fade-in-down backwards" type="tel" placeholder="手机号" maxlength="11" name="phone"/>
                 <input class="page8-input fade-in-down backwards" type="text" placeholder="姓名" maxlength="4" name="userName"/>
                 <input class="page8-input fade-in-down backwards" type="text" placeholder="祝福" name="wish"/>
@@ -408,7 +408,7 @@
     </div>
 
 </div>
-<audio id="music" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/audio/ifYouBecomeWind.mp3" autoplay="autoplay" loop="loop"></audio>
+<audio id="music" src="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/audio/ifYouBecomeWind.mp3" autoplay="autoplay" loop="loop"></audio>
 <script>
     var isPlaying = true;
     var music = document.getElementById("music");
@@ -425,7 +425,7 @@
     }
 
 </script>
-<div class="audio_btn play" onclick="musicController()"><img src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/musicon.png"></div>
+<div class="audio_btn play" onclick="musicController()"><img src="https://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/musicon.png"></div>
 <script src="./js/leaf.js"></script>
 <script>
 
@@ -450,7 +450,7 @@
     }
 
     function locationNavgation(hotelLocation,cityLocation,textElement,mapId){
-        var text = "<span onclick=window.location.href='http://api.map.baidu.com/geocoder?address="+hotelLocation+"&output=html'>"+hotelLocation+"<br/>(点击导航)</span>"
+        var text = "<span onclick=window.location.href='https://api.map.baidu.com/geocoder?address="+hotelLocation+"&output=html'>"+hotelLocation+"<br/>(点击导航)</span>"
         $(textElement).html(text);
 
         // 百度地图API功能
