@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>熊峰&余盼520婚礼</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html, body, #container {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            display: none;
+        }
+
+        .falling-leaves {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .leaf-scene {
+            position: absolute;
+            top: 0;
+            left: -100px;
+            bottom: 0;
+            width: 100%;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+
+        .leaf-scene div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 47px;
+            height: 17px;
+            background: url(./image/sy.png) no-repeat;
+            background-size: 100%;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-backface-visibility: visible;
+            backface-visibility: visible;
+        }
+
+    </style>
+    <script src="./js/Tween.js"></script>
+    <script src="./js/flowers.js"></script>
+    <script src="./js/fireworks.js"></script>
+    <script src="./js/star.js"></script>
+    <script src="./js/heart.js"></script>
+    <script src="./js/light.js"></script>
+</head>
+<body>
+<div id="container" class="falling-leaves">
+    <canvas id="canvas">
+        Your browser does not support the HTML5 canvas tag.
+    </canvas>
+</div>
+<script>
+    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+    var cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame;
+
+    var img_list = [];
+    for (var i = 1; i <= 9; i++) {
+        img_list.push(i);
+    }
+    var imgListLen = img_list.length;
+
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    ctx.save();
+    var scale = 1;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    var offsetCanvas = document.createElement('canvas');
+    var offsetCanvasCtx = offsetCanvas.getContext('2d');
+    offsetCanvas.width = window.innerWidth;
+    offsetCanvas.height = window.innerHeight;
+
+    function imgResponse(imgArr) {
+        for (var i = 0; i <= imgListLen; i++) {
+            if (Object.prototype.toString.call(imgArr[i]) === "[object Object]") {
+                var img = imgArr[i].imageObject;
+                imgArr[i].imgClipData = {};
+                //canvas drawImage自适应
+                if (img.width / img.height >= window.innerWidth / window.innerHeight) {
+                    imgArr[i].imgClipData.width = parseInt(img.height * window.innerWidth / window.innerHeight);
+                    imgArr[i].imgClipData.height = img.height;
+                    imgArr[i].imgClipData.x = (img.width - imgArr[i].imgClipData.width) / 2;
+                    imgArr[i].imgClipData.y = 0;
+                } else {
+                    imgArr[i].imgClipData.width = img.width;
+                    imgArr[i].imgClipData.height = parseInt(img.width / window.innerWidth * window.innerHeight);
+                    imgArr[i].imgClipData.x = 0;
+                    imgArr[i].imgClipData.y = (img.height - imgArr[i].imgClipData.height) / 2;
+                }
+
+                //canvas background 自适应
+//                    if(img.width/img.height>=window.innerWidth/window.innerHeight){
+//                        imgArr[i].imgClipData.width = parseInt(window.innerHeight*img.width/img.height);
+//                        imgArr[i].imgClipData.height = window.innerHeight;
+//                        imgArr[i].imgClipData.x = -(imgArr[i].imgClipData.width-window.innerWidth)/2;
+//                        imgArr[i].imgClipData.y = 0;
+//                    }else{
+//                        imgArr[i].imgClipData.width = window.innerWidth;
+//                        imgArr[i].imgClipData.height = parseInt(window.innerWidth*img.height/img.width);
+//                        imgArr[i].imgClipData.x = 0;
+//                        imgArr[i].imgClipData.y = -(imgArr[i].imgClipData.height-window.innerHeight)/2;
+//                    }
+            }
+        }
+    }
+
+    function imgResponseAsBg(imgArr) {
+        var bgArr = [];
+        for (var i = 0; i <= imgListLen; i++) {
+            if (Object.prototype.toString.call(imgArr[i]) === "[object Object]") {
+                var img = imgArr[i].imageObject;
+                bgArr[i] = {};
+                bgArr[i].imageObject = img;
+                bgArr[i].imgClipData = {};
+                //canvas background 自适应
+                if (img.width / img.height >= window.innerWidth / window.innerHeight) {
+                    bgArr[i].imgClipData.width = parseInt(window.innerHeight * img.width / img.height);
+                    bgArr[i].imgClipData.height = window.innerHeight;
+                    bgArr[i].imgClipData.x = -(bgArr[i].imgClipData.width - window.innerWidth) / 2;
+                    bgArr[i].imgClipData.y = 0;
+                } else {
+                    bgArr[i].imgClipData.width = window.innerWidth;
+                    bgArr[i].imgClipData.height = parseInt(window.innerWidth * img.height / img.width);
+                    bgArr[i].imgClipData.x = 0;
+                    bgArr[i].imgClipData.y = -(bgArr[i].imgClipData.height - window.innerHeight) / 2;
+                }
+            }
+        }
+        return bgArr;
+    }
+
+    function loadImg(imgArr, callback) {
+        var len = imgArr.length;
+        if (len <= 0)return callback(1, []);
+        var loaded = 0;
+        var imgList = [];
+        var loadFun = function (evt) {
+            var type = {
+                "load": 1,
+                "error": 2
+            }[evt.type];
+            if (type === 1) {
+                if (loaded < len) {
+                    ++loaded;
+                    callback(loaded / len, imgList);
+                }
+            } else {
+                this.src = this.src;
+            }
+        };
+        for (var i = 0; i < len; i++) {
+            imgList[i] = {};
+            imgList[i].imageObject = new Image;
+            imgList[i].imageObject.onload = function () {
+                loadFun.call(this, {
+                    type: "load"
+                })
+            };
+            imgList[i].imageObject.onerror = function () {
+                loadFun.call(this, {
+                    type: "error"
+                })
+            };
+            imgList[i].imageObject.src = imgArr[i];
+        }
+    };
+
+    var imageDrawerArr = [], bgArr;
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        for (var j = 0; j < imgListLen; j++) {
+            img_list[j] = 'http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/index/image/' + img_list[j] + ".jpg";
+        }
+
+        loadImg(img_list, function (o, imgObjectList) {
+            if (o === 1) {
+
+
+                imgResponse(imgObjectList);
+                bgArr = imgResponseAsBg(imgObjectList);
+
+                Transform.init(ctx);
+                pageManage.init(ctx);
+                FLOWERS.init(canvas, ctx);
+                FIREWORKS.init(canvas, ctx);
+                StarRain.init(ctx);
+                HEARTS.init(ctx);
+                LIGHTS.init(ctx);
+                LEAFS.init();
+
+
+                var num = 1;
+
+                for (var i = 0; i < imgObjectList.length; i++) {
+                    var img = imgObjectList[i];
+                    imageDrawerArr.push(new ImageDrawer(img.imageObject, img.imgClipData, ctx));
+                }
+
+                pageManage.animateInit(0);
+
+
+            }
+        });
+    })
+
+
+    //图像实例
+    function ImageDrawer(imageObject, imgClipData, context) {
+        this.context = context;
+        this.imageObject = imageObject;
+        this.imgClipData = imgClipData;
+    }
+    ImageDrawer.prototype = {
+        setParam: function () {
+
+        },
+        draw: function () {
+            this.context.drawImage(this.imageObject, this.imgClipData.x,
+                    this.imgClipData.y, this.imgClipData.width,
+                    this.imgClipData.height, 0, 0, window.innerWidth, window.innerHeight);
+        },
+        drawInOffsetCanvas: function () {
+            offsetCanvasCtx.drawImage(this.imageObject, this.imgClipData.x,
+                    this.imgClipData.y, this.imgClipData.width,
+                    this.imgClipData.height, 0, 0, window.innerWidth, window.innerHeight);
+            return offsetCanvas;
+        }
+    }
+
+
+    //变形方法
+    var Transform = {
+        init: function (context) {
+            this.context = context;
+        },
+        translate: function (x, y) {
+            this.context.translate(x, y);
+        },
+        scale: function (scale) {
+            var scaleObj = {};
+            if (Object.prototype.toString.call(scale) === "[object Object]") {
+                scaleObj = scale;
+            } else if (Object.prototype.toString.call(scale) === "[object Number]") {
+                scaleObj = {
+                    x: scale,
+                    y: scale
+                }
+            }
+            var translateX = window.innerWidth / 2;
+            var translateY = window.innerHeight / 2;
+
+            this.context.translate(translateX, translateY);
+
+            this.context.scale(scaleObj.x, scaleObj.y);
+
+            this.context.translate(-translateX, -translateY);
+
+        }
+    }
+
+    var heartHeight = heartWidth = 220;
+    var scale = 1;
+
+    var pageManage = {
+        //每页动画处理逻辑
+        "0": function () {
+            this.pageData[this.pageIndex].scale.x = this.pageData[this.pageIndex].scale.x - 0.01;
+            this.pageData[this.pageIndex].scale.y = this.pageData[this.pageIndex].scale.y - 0.01;
+            Transform.scale(this.pageData[this.pageIndex].scale.x, this.pageData[this.pageIndex].scale.y);
+            imageDrawerArr[this.pageIndex].draw();
+            if (this.pageData[this.pageIndex].scale.x <= 0 || this.pageData[this.pageIndex].scale.y <= 0) {
+                this.animateStop();
+                this.pageData[this.pageIndex].scale = {x: 1, y: 1};
+                this.animateInit(this.pageIndex + 1,1);
+            }
+        },
+        "1": function () {
+            this.pageData[this.pageIndex].x += 4;
+            Transform.translate(this.pageData[this.pageIndex].x, 0);
+            imageDrawerArr[this.pageIndex].draw();
+            if (this.pageData[this.pageIndex].x >= window.innerWidth) {
+                this.animateStop();
+                this.pageData[this.pageIndex].x = 0;
+                this.animateInit(this.pageIndex + 1,1,true);
+            }
+        },
+        "2": function () {
+//            this.pageData[this.pageIndex].y += 8;
+//            Transform.translate(0, this.pageData[this.pageIndex].y);
+//            imageDrawerArr[this.pageIndex].draw();
+//            if (this.pageData[this.pageIndex].y >= window.innerHeight) {
+//                this.animateStop();
+//                this.pageData[this.pageIndex].y = 0;
+//                this.animateInit(this.pageIndex + 1, 3);
+//                this.pageData[this.flowerPage].startTime = new Date().getTime();
+//            }
+            scale = ((scale*10000+100)/10000).toFixed(3);
+
+            ctx.scale(1, 1);
+            ctx.save();
+
+            var translateX = (window.innerWidth-heartWidth*scale)/2;
+            var translateY = (window.innerHeight-heartHeight*scale)/2;
+
+            ctx.translate(translateX, translateY);
+
+            ctx.scale(scale, scale);
+
+            ctx.beginPath();
+            ctx.moveTo(865.8,248.5);
+            ctx.quadraticCurveTo("866", "248.4", "866.2", "248.25");
+            ctx.quadraticCurveTo("865.95", "248.1", "865.75", "247.95");
+            ctx.quadraticCurveTo("858.75", "243.25", "852.25", "239.25");
+            ctx.quadraticCurveTo("841.75", "232.75", "832.55", "228.1");
+            ctx.quadraticCurveTo("800.25", "211.85", "784.25", "218.35");
+            ctx.quadraticCurveTo("773.6", "222.7", "771.1", "237.1");
+            ctx.quadraticCurveTo("768.85", "250.3", "773.6", "270.7");
+            ctx.quadraticCurveTo("777.55", "287.6", "784.9", "305.5");
+            ctx.quadraticCurveTo("791.25", "321.05", "800.15", "337.3");
+            ctx.quadraticCurveTo("804.1", "344.6", "808.6", "352.05");
+            ctx.quadraticCurveTo("809.7", "353.85", "810.8", "355.65");
+            ctx.quadraticCurveTo("816.75", "365.35", "822.65", "373.8");
+            ctx.quadraticCurveTo("844.9", "405.7", "866.2", "419.4");
+            ctx.quadraticCurveTo("893.05", "402.1", "921.55", "355.65");
+            ctx.quadraticCurveTo("949.45", "310.3", "958.75", "270.7");
+            ctx.quadraticCurveTo("963.5", "250.3", "961.25", "237.1");
+            ctx.quadraticCurveTo("958.75", "222.7", "948.1", "218.35");
+            ctx.quadraticCurveTo("933.05", "212.25", "903.65", "226.25");
+            ctx.quadraticCurveTo("887.3", "234", "866.6", "247.95");
+            ctx.quadraticCurveTo("866.4", "248.1", "866.2", "248.25");
+            ctx.quadraticCurveTo("866.35", "248.4", "866.55", "248.5");
+            ctx.lineTo(867.85,249.4);
+            ctx.quadraticCurveTo(870,250.9,872.25,252.45);
+            ctx.moveTo(108.8,210);
+            ctx.quadraticCurveTo("109.4", "209.9", "110", "209.85");
+            ctx.quadraticCurveTo("97.75", "208.25", "83.2", "195.55");
+            ctx.quadraticCurveTo("69.1", "183.35", "55", "162.65");
+            ctx.quadraticCurveTo("41.55", "142.85", "30.85", "119.55");
+            ctx.quadraticCurveTo("20", "96.15", "14.55", "74.8");
+            ctx.quadraticCurveTo("8.8", "52.25", "10.35", "36.7");
+            ctx.quadraticCurveTo("12", "19.8", "22.15", "13.75");
+            ctx.quadraticCurveTo("46", "-0.5", "110", "46.8");
+            ctx.quadraticCurveTo("174", "-0.5", "197.9", "13.75");
+            ctx.quadraticCurveTo("208.05", "19.8", "209.7", "36.7");
+            ctx.quadraticCurveTo("211.2", "52.25", "205.5", "74.8");
+            ctx.quadraticCurveTo("200.05", "96.15", "189.25", "119.55");
+            ctx.quadraticCurveTo("178.5", "142.85", "165.05", "162.65");
+            ctx.quadraticCurveTo("150.9", "183.35", "136.85", "195.55");
+            ctx.quadraticCurveTo("122.35", "208.25", "110", "209.85");
+            ctx.quadraticCurveTo("110.65", "209.9", "111.25", "210");
+            ctx.moveTo(112.35,10.8);
+            ctx.quadraticCurveTo(112.15,10.4,112,10);
+
+            ctx.restore();
+
+            ctx.save();
+            /*
+             *  clip() 相当剪切掉了 没法直接还原
+             *  用save()方法 在clip()之前 创建一个保存点   之后可以用restore()方法 回到保存点
+             *  就相当一个存取档的功能
+             * */
+
+            ctx.clip();
+
+            imageDrawerArr[this.pageIndex].draw();
+
+            ctx.restore();
+
+            if (scale > 5) {
+                this.animateStop();
+                scale = 1;
+                this.animateInit(this.pageIndex + 1,3);
+                this.pageData[this.flowerPage].startTime = new Date().getTime();
+            }
+        },
+        "3": function () {
+            FLOWERS.render();
+            var endTime = new Date().getTime();
+            if (this.pageData[this.flowerPage].startTime != null && endTime - this.pageData[this.flowerPage].startTime > 5500) {
+                this.animateStop();
+                this.pageData[this.flowerPage].startTime = null;
+                this.animateInit(this.pageIndex + 1, 4);
+                FLOWERS.init(canvas, ctx);
+                this.pageData[this.fireworkPage].startTime = new Date().getTime();
+            }
+        },
+        "4": function () {
+            FIREWORKS.render();
+            var endTime = new Date().getTime();
+            if (this.pageData[this.fireworkPage].startTime != null && endTime - this.pageData[this.fireworkPage].startTime > 5500) {
+                this.animateStop();
+                this.pageData[this.fireworkPage].startTime = null;
+                this.animateInit(this.pageIndex + 1, 5);
+                FIREWORKS.init(canvas, ctx);
+                this.pageData[this.starRainPage].startTime = new Date().getTime();
+            }
+        },
+        "5": function () {
+            StarRain.render();
+            var endTime = new Date().getTime();
+            if (this.pageData[this.starRainPage].startTime != null && endTime - this.pageData[this.starRainPage].startTime > 5500) {
+                this.animateStop();
+                this.pageData[this.starRainPage].startTime = null;
+                this.animateInit(this.pageIndex + 1, 6);
+                StarRain.init(ctx, true);
+                this.pageData[this.heartsPage].startTime = new Date().getTime();
+            }
+        },
+        "6": function () {
+            HEARTS.render();
+            var endTime = new Date().getTime();
+            if (this.pageData[this.heartsPage].startTime != null && endTime - this.pageData[this.heartsPage].startTime > 5500) {
+                this.animateStop();
+                this.pageData[this.heartsPage].startTime = null;
+                this.animateInit(this.pageIndex + 1, 7);
+                HEARTS.init(ctx);
+                this.pageData[this.lightPage].startTime = new Date().getTime();
+            }
+        },
+        "7": function () {
+            LIGHTS.render();
+            var endTime = new Date().getTime();
+            if (this.pageData[this.lightPage].startTime != null && endTime - this.pageData[this.lightPage].startTime > 5500) {
+                this.animateStop();
+                this.pageData[this.lightPage].startTime = null;
+                this.animateInit(this.pageIndex + 1, 8);
+                LIGHTS.init(ctx);
+                this.pageData[this.leafPage].startTime = new Date().getTime();
+            }
+        },
+        "8": function () {
+            document.querySelector(".leaf-scene").style.display = "block";
+            LEAFS.render();
+            var endTime = new Date().getTime();
+            if (this.pageData[this.leafPage].startTime != null && endTime - this.pageData[this.leafPage].startTime > 5500) {
+                this.animateStop();
+                document.querySelector(".leaf-scene").style.display = "none";
+                this.pageData[this.leafPage].startTime = null;
+                this.animateInit(this.pageIndex + 1);
+            }
+        },
+        pageData: {
+            "0": {
+                scale: {x: 1, y: 1}
+            },
+            "1": {
+                x: 0
+            },
+            "2": {
+                y: 0
+            },
+            "3": {
+                startTime: null
+            },
+            "4": {
+                startTime: null
+            },
+            "5": {
+                startTime: null
+            },
+            "6": {
+                startTime: null
+            },
+            "7": {
+                startTime: null
+            },
+            "8": {
+                startTime: null
+            }
+        },
+        timer: null,
+        flowerPage: 3,
+        fireworkPage: 4,
+        starRainPage: 5,
+        heartsPage: 6,
+        lightPage: 7,
+        leafPage: 8,
+        maxPageIndex: 8,
+        pageIndex: 0,
+        animate: function () {
+            this.timer = requestAnimationFrame(this.animate.bind(this));
+            ctx.save();
+            ctx.clearRect(0, 0, window.innerWidth * 2, window.innerHeight * 2);
+            pageManage[this.pageIndex + ""]();
+            ctx.restore();
+        },
+        animateInit: function (index, bgIndex, noDraw) {
+            if (index === undefined || index === null) {
+                this.pageIndex++;
+            } else {
+                this.pageIndex = index;
+            }
+            if (this.pageIndex > this.maxPageIndex) {
+                this.pageIndex = 0;
+            }
+            this.restore();
+            if(!noDraw){
+                imageDrawerArr[this.pageIndex].draw();
+            }
+            if (bgIndex === undefined || bgIndex === null) {
+                bgIndex = this.pageIndex + 1;
+                if (bgIndex > this.maxPageIndex) {
+                    bgIndex = 0
+                }
+            }
+            this.setBg(bgIndex);
+            setTimeout(function () {
+                requestAnimationFrame(this.animate.bind(this));
+            }.bind(this), 200)
+        },
+        animateStop: function () {
+            cancelAnimationFrame(this.timer);
+        },
+        setBg: function (index) {
+
+            //绿叶背景特殊处理图片位置
+            if(img_list[index].indexOf("9.jpg")>-1){
+                bgArr[index].imgClipData.x = -parseInt(bgArr[index].imgClipData.width*6/7 - window.innerWidth*6/7);
+            }
+
+            document.querySelector("#container").style.background = "url(" + img_list[index] + ") no-repeat "
+                    + bgArr[index].imgClipData.x + "px " + bgArr[index].imgClipData.y + "px/"
+                    + bgArr[index].imgClipData.width + "px " + bgArr[index].imgClipData.height + "px";
+        },
+        init: function (context) {
+            this.context = context;
+        },
+        restore: function () {
+            this.context.restore();
+            this.context.resetTransform();
+            this.context.save();
+        }
+    }
+
+
+</script>
+<script src="./js/leaf.js"></script>
+</body>
+</html>
