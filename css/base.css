@@ -1,0 +1,1664 @@
+@font-face
+{
+    font-family: weddingFont;
+    src: url('./yDk0iw76.ttf');
+}
+
+body{
+    background: #fff;
+    font-family: "weddingFont","幼圆", "仿宋", "Helvetica Rounded", Arial, sans-serif;
+}
+
+.body-hide1{
+    display: none;
+}
+
+.body-hide2{
+    display: none;
+}
+
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
+}
+
+.section-bg{
+    z-index: 2;
+    background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/2.png") no-repeat center center;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    color:#fff;
+}
+
+.audio_btn {
+    display: block;
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    right: 10px;
+    top: 10px;
+    z-index: 99999;
+}
+.audio_btn img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.audio_btn.play {
+    animation: play 1.5s linear both infinite;
+    -webkit-animation: play 1.5s linear both infinite;
+}
+@-webkit-keyframes play{
+    0%{transform: rotate(0deg);-webkit-transform: rotate(0deg);}
+    100%{transform: rotate(360deg);-webkit-transform: rotate(360deg);}
+}
+
+.wishes{
+    position: absolute;
+    width: auto;
+    height: 1rem;
+    line-height:1rem;
+    font-size:1rem;
+    top: 0;
+    z-index: 99;
+    color:#ff6699;
+    word-break:keep-all;
+    white-space:nowrap;
+    transform: translate3d(-100%,0,0);
+    -webkit-transform: translate3d(-100%,0,0);
+    font-family: "幼圆", "仿宋", "Helvetica Rounded", Arial, sans-serif;
+}
+
+.wishes>span{
+    display: inline-block;
+    margin-right:1rem;
+}
+
+.scroll {
+    animation-name: scroll;
+    -webkit-animation-name: scroll;
+    animation-delay:500ms;/*动画延迟时间*/
+    -webkit-animation-delay:500ms;/*动画延迟时间*/
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+@-webkit-keyframes scroll{
+    0%{transform: translate3d(200px,0,0);-webkit-transform: translate3d(200px,0,0);}
+    100%{transform: translate3d(-100%,0,0);-webkit-transform: translate3d(-100%,0,0);}
+}
+
+
+
+/*.page1-bg{*/
+    /*background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/1.png") no-repeat center center/100% 100%;*/
+/*}*/
+
+.page1-flower{
+    z-index: 5;
+    background: url(http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/1-flower.png) no-repeat center center;
+    width: 300px;
+    height: 300px;
+}
+
+.active .page1-flower{
+    animation-name: rotate;
+    -webkit-animation-name: rotate;
+    animation-delay:1s;/*动画延迟时间*/
+    -webkit-animation-delay:1s;/*动画延迟时间*/
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    animation-timing-function: cubic-bezier(.4,.34,.66,.82);
+    -webkit-animation-timing-function: cubic-bezier(.4,.34,.66,.82);
+}
+
+.page1-cover{
+    z-index: 4;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.active .page1-cover{
+    animation-name: reverseRotate;
+    -webkit-animation-name: reverseRotate;
+    animation-delay:1s;/*动画延迟时间*/
+    -webkit-animation-delay:1s;/*动画延迟时间*/
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    animation-timing-function: cubic-bezier(.4,.34,.66,.82);
+    -webkit-animation-timing-function: cubic-bezier(.4,.34,.66,.82);
+}
+
+.page1-title{
+    text-align: center;
+    width:100%;
+    font-size: 1.5rem;
+    color:#fff;
+    position: absolute;
+    top:0%;
+}
+
+.active .page1-title{
+    animation-name: swing;
+    -webkit-animation-name: swing;
+    animation-delay:500ms;/*动画延迟时间*/
+    -webkit-animation-delay:500ms;/*动画延迟时间*/
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.page1-date{
+    text-align: center;
+    width:100%;
+    font-size: 1rem;
+    color:#fff;
+    position: absolute;
+    bottom:16%;
+}
+
+.active .page1-date{
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+    animation-delay:2.5s;/*动画延迟时间*/
+    -webkit-animation-delay:2.5s;/*动画延迟时间*/
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+}
+
+.page1-name{
+    text-align: center;
+    width:100%;
+    font-size: 1rem;
+    color:#fff;
+    position: absolute;
+    bottom:8%;
+}
+
+.active .page1-name{
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+    animation-delay:3s;/*动画延迟时间*/
+    -webkit-animation-delay:3s;/*动画延迟时间*/
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+}
+
+.page1-name>span{
+    color:lightpink;
+}
+
+.page1-content{
+    text-align: center;
+    width:100%;
+    font-size: 1.2rem;
+    color:#fff;
+    position: absolute;
+    bottom:0%;
+}
+
+.active .page1-content{
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+    animation-delay:3.5s;/*动画延迟时间*/
+    -webkit-animation-delay:3.5s;/*动画延迟时间*/
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+}
+
+.page2-bg {
+    background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/2-bg.png") no-repeat 35% center/auto 100%;
+}
+
+.page2-month {
+    width: 4%;
+    text-align: center;
+    font-size: 0.8rem;
+    position: absolute;
+    top: 4.2%;
+    left: 5.8%;
+}
+
+.page2-svg{
+    z-index: 4;
+    position: relative;
+    top: -20px;
+}
+
+.page2-context{
+    font-size: 1rem;
+    width: 70%;
+    margin: 0 15%;
+    text-align: right;
+    line-height: 2rem;
+    z-index:4;
+}
+
+.page-2-heart-1{
+    width: 100px;
+    position: absolute;
+    top: 120px;
+    left: 85px;
+    transform: rotate(-15deg) scale(1,1);
+}
+
+.active .page-2-heart-1-jump{
+    animation-name: jump;
+    -webkit-animation-name: jump;
+    animation-delay:1s;/*动画延迟时间*/
+    -webkit-animation-delay:1s;/*动画延迟时间*/
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+.page-2-heart-2{
+    width: 150px;
+    position: absolute;
+    top: 300px;
+    left: 10px;
+    transform: rotate(30deg) scale(1,1);
+}
+
+.active .page-2-heart-2-jump{
+    animation-name: jump2;
+    -webkit-animation-name: jump2;
+    animation-delay:2s;/*动画延迟时间*/
+    -webkit-animation-delay:2s;/*动画延迟时间*/
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+.active path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation-name: dash;
+    -webkit-animation-name: dash;
+    animation-duration: 15s;
+    -webkit-animation-duration: 15s;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    -webkit-animation-iteration-count: 1
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@-webkit-keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/*.page3-bg{*/
+    /*background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/3.png") no-repeat center center;*/
+/*}*/
+
+.page3-man{
+    width: 45%;
+    position: absolute;
+    right: 15%;
+    bottom: 0%;
+    border-radius: 10px;
+}
+
+.active .page3-man{
+    animation-delay:2s;
+    -webkit-animation-delay:2s;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+.page3-woman{
+    width: 45%;
+    position: absolute;
+    left: 15%;
+    border-radius: 10px;
+}
+
+.active .page3-fadeIn{
+    animation-name: fadeIn;
+    -webkit-animation-name: fadeIn;
+}
+
+.active .page3-woman{
+    animation-delay:0s;
+    -webkit-animation-delay:0s;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+.page3-left-word{
+    position: absolute;
+    right: 20%;
+    top:10%;
+    font-size:1rem;
+}
+
+.active .page3-left-word>div:nth-child(1){
+    animation-delay:0s;
+    -webkit-animation-delay:0s;
+}
+
+.active .page3-left-word>div:nth-child(2){
+    animation-delay:.5s;
+    -webkit-animation-delay:.5s;
+}
+
+.active .page3-left-word>div:nth-child(3){
+    animation-delay:1s;
+    -webkit-animation-delay:1s;
+}
+
+.active .page3-left-word>div:nth-child(4){
+    animation-delay:1.5s;
+    -webkit-animation-delay:1.5s;
+}
+
+.page3-right-word{
+    position: absolute;
+    left: 20%;
+    bottom:10%;
+    font-size:1rem;
+}
+
+.active .page3-right-word>div:nth-child(1){
+    animation-delay:2s;
+    -webkit-animation-delay:2s;
+}
+
+.active .page3-right-word>div:nth-child(2){
+    animation-delay:2.5s;
+    -webkit-animation-delay:2.5s;
+}
+
+.active .page3-right-word>div:nth-child(3){
+    animation-delay:3s;
+    -webkit-animation-delay:3s;
+}
+
+.active .page3-right-word>div:nth-child(4){
+    animation-delay:3.5s;
+    -webkit-animation-delay:3.5s;
+}
+
+.page3-left-word>div,.page3-right-word>div{
+    font-size: 1rem;
+    width:1.2rem;
+    text-align: center;
+    opacity: 0;
+}
+
+/*.page4-bg{*/
+    /*background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/4.png") no-repeat center center;*/
+/*}*/
+
+.page4-up{
+    width: 90%;
+    position: absolute;
+    top: 8%;
+    left: 5%;
+}
+
+.active .page4-up{
+    animation-name: rotateFromLeft;
+    -webkit-animation-name: rotateFromLeft;
+    animation-delay:0s;
+    -webkit-animation-delay:0s;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+.page4-text{
+    position: absolute;
+    top: 50%;
+    margin:-1.6rem 10% 0;
+    width: 80%;
+    text-align: center;
+    font-size:1rem;
+}
+
+.active .page4-text{
+    animation-name: translateFromLeft;
+    -webkit-animation-name: translateFromLeft;
+    animation-delay:3s;
+    -webkit-animation-delay:3s;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    animation-timing-function:ease;
+    -webkit-animation-timing-function:ease;
+}
+
+.page4-down{
+    width: 90%;
+    position: absolute;
+    bottom: 8%;
+    left: 5%;
+}
+
+.active .page4-down{
+    animation-name: rotateFromLeft;
+    -webkit-animation-name: rotateFromLeft;
+    animation-delay:2s;
+    -webkit-animation-delay:2s;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+/*.page5-bg{*/
+    /*background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/5.png") no-repeat center center;*/
+/*}*/
+
+.page5-up{
+    position: absolute;
+    top: 8%;
+    width: 90%;
+    left: 0;
+    margin: 0 5%;
+}
+
+.active .page5-flip{
+    -webkit-transform: translate3d(-1000px,0,0);
+    transform: translate3d(-1000px,0,0);
+    animation-name: flip;
+    -webkit-animation-name: flip;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+.active .page5-up{
+    animation-delay:0s;
+    -webkit-animation-delay:0s;
+}
+
+.page5-text{
+    position: absolute;
+    top: 50%;
+    margin:-1rem 10% 0;
+    width: 80%;
+    text-align: center;
+    font-size:1rem;
+}
+
+.active .page5-text{
+    animation-name: bounceInDown;
+    -webkit-animation-name: bounceInDown;
+    animation-delay:4s;
+    -webkit-animation-delay:4s;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+.page5-left{
+    position: absolute;
+    left: 5%;
+    bottom: 8%;
+    width: 43%;
+}
+
+.active .page5-left{
+    animation-delay:2s;
+    -webkit-animation-delay:2s;
+}
+
+.page5-right{
+    position: absolute;
+    right: 5%;
+    bottom: 8%;
+    width: 43%;
+}
+
+.active .page5-right{
+    animation-delay:4s;
+    -webkit-animation-delay:4s;
+}
+
+/*.page6-bg{*/
+    /*background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/6.png") no-repeat center center;*/
+/*}*/
+
+.page6-up{
+    position: absolute;
+    z-index:6;
+    top: 8%;
+    width: 90%;
+    left: 0;
+    margin: 0 5%;
+}
+
+.active .page6-up{
+    animation-name: fadeInRightBig;
+    -webkit-animation-name: fadeInRightBig;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+.page6-text{
+    width:10%;
+    font-size:1rem;
+}
+
+.page6-text>div:nth-child(1){
+    position: absolute;
+    left: 10%;
+    bottom: 12%;
+}
+
+.page6-text>div:nth-child(2){
+    position: absolute;
+    left: 20%;
+    bottom: 17%;
+}
+
+.active .page6-text>div:nth-child(1){
+    animation-name: bounceInDown;
+    -webkit-animation-name: bounceInDown;
+    animation-delay:2s;
+    -webkit-animation-delay:2s;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.active .page6-text>div:nth-child(2){
+    animation-name: bounceInDown;
+    -webkit-animation-name: bounceInDown;
+    animation-delay:3s;
+    -webkit-animation-delay:3s;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.page6-right{
+    position: absolute;
+    z-index:5;
+    right: 5%;
+    bottom: 8%;
+    width: 55%;
+}
+
+.active .page6-right{
+    animation-name: fadeInUpBig;
+    -webkit-animation-name: fadeInUpBig;
+    animation-delay:1s;
+    -webkit-animation-delay:1s;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+/*.page7-bg{*/
+    /*background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/7.png") no-repeat center center;*/
+/*}*/
+
+.page8-title{
+    color:#fff;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.active .page8-title{
+    animation-name: enlarge;
+    -webkit-animation-name: enlarge;
+    animation-delay:0ms;/*动画延迟时间*/
+    -webkit-animation-delay:0ms;/*动画延迟时间*/
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.page8-we{
+    width: 50%;
+    margin: 0 25%;
+    position: absolute;
+    top:15%;
+}
+
+.active .page8-we{
+    animation-name: rotateFromLeft;
+    -webkit-animation-name: rotateFromLeft;
+    animation-delay:1s;/*动画延迟时间*/
+    -webkit-animation-delay:1s;/*动画延迟时间*/
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.page8-input{
+    position: absolute;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 0.8rem;
+    width: 60%;
+    padding: 0 2%;
+    margin: 0 18%;
+    -webkit-appearance: none;
+    border: 1px solid #fff;
+    background: #bbe3d8;
+    color: #fff;
+    border-radius: 5px;
+    outline: none;
+}
+
+.active .fade-in-down{
+    animation-name: fadeInDown;
+    -webkit-animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.page8-input:nth-child(3){
+    top: 60%;
+}
+
+.active .page8-input:nth-child(3){
+    animation-delay:.5s;
+    -webkit-animation-delay:.5s;
+}
+
+.page8-input:nth-child(4){
+    top: 70%;
+}
+
+.active .page8-input:nth-child(4){
+    animation-delay:1s;
+    -webkit-animation-delay:1s;
+}
+
+.page8-input:nth-child(5){
+    top: 80%;
+}
+
+.active .page8-input:nth-child(5){
+    animation-delay:1.5s;
+    -webkit-animation-delay:1.5s;
+}
+
+.page8-button{
+    position: absolute;
+    top:90%;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 0.8rem;
+    width: 66%;
+    margin: 0 17%;
+    -webkit-appearance: none;
+    border: 1px solid #fff;
+    background: #bbe3d8;
+    color: #fff;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.active .page8-button{
+    animation-delay:2s;
+    -webkit-animation-delay:2s;
+}
+
+
+div.page9-location{
+    width: 70%;
+    height: 55%;
+    top: 30%;
+}
+
+.active .page9-location{
+    animation-name: rotate;
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+div.page9-time{
+    position: absolute;
+    top: 65%;
+    width: 100%;
+}
+
+.active .page9-time{
+    animation-delay:.5s;
+    -webkit-animation-delay:.5s;
+}
+
+div.page9-address{
+    position: absolute;
+    top: 72%;
+    width: 100%;
+}
+
+.active .page9-address{
+    animation-delay:1s;
+    -webkit-animation-delay:1s;
+}
+
+.page9-contact{
+    position: absolute;
+    top: 90%;
+    width: 70%;
+    margin: 0 15%;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 0.8rem;
+}
+
+.active .page9-contact{
+    animation-delay:1.5s;
+    -webkit-animation-delay:1.5s;
+}
+
+.page9-contact>div{
+    -webkit-appearance: none;
+    border: 1px solid #fff;
+    background: #bbe3d8;
+    color: #fff;
+    border-radius: 20px;
+    text-align: center;
+    margin:0 2%;
+}
+
+.falling-leaves {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.leaf-scene {
+    position: absolute;
+    top: 0;
+    left: -100px;
+    bottom: 0;
+    width: 100%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.leaf-scene div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 47px;
+    height: 17px;
+    background: url(http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/sy.png) no-repeat;
+    background-size: 100%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+}
+
+.center-obj {
+    width: 320px;
+    height: 420px;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    -webkit-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+.box{
+    display: box;
+    display: -webkit-box;
+}
+
+.box-1{
+    -webkit-box-flex: 1;
+    box-flex:1;
+}
+
+
+.align-center{
+    text-align: center;
+}
+
+.bottom-icon{
+    z-index: 10;
+    background: url("http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/up.png") no-repeat center 0;
+    background-size: 100% auto;
+    width: 10%;
+    height: 6%;
+    position: absolute;
+    top: 90%;
+    left: 45%;
+}
+
+input::-webkit-input-placeholder{
+    color:#fff;
+}
+input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color:#fff;
+}
+input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color:#fff;
+}
+input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+    color:#fff;
+}
+
+
+@media only screen and (max-device-width: 414px) and (min-device-width: 412px){
+    .center-obj {
+        zoom: 1.3;
+    }
+    html,body{
+        font-size:18px ;
+    }
+}
+@media only screen and (max-device-width: 411px) and (min-device-width: 375px){
+    .center-obj {
+        zoom: 1.2;
+    }
+    html,body{
+        font-size:16px ;
+    }
+}
+@media only screen and (max-device-width: 374px) and (min-device-width: 360px){
+    .center-obj {
+        zoom: 1.1;
+    }
+    html,body{
+        font-size:14px ;
+    }
+}
+
+@media only screen and (max-device-width: 359px) and (min-device-width: 320px){
+    .center-obj {
+        zoom: 1;
+    }
+    html,body{
+        font-size:12px ;
+    }
+}
+
+/*animate*/
+@-webkit-keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0,-50%,0);
+        transform: translate3d(0,-50%,0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+}
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0,-50%,0);
+        transform: translate3d(0,-50%,0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+}
+
+.fadeInUp{
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
+
+@-webkit-keyframes rotate {
+    0% {
+        opacity: 0;
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-transform: translate3d(-50%,-50%,0) rotateZ(0deg);
+        transform: translate3d(-50%,-50%,0) rotateZ(0deg);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-transform: translate3d(-50%,-50%,0) rotateZ(360deg);
+        transform: translate3d(-50%,-50%,0) rotateZ(360deg);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        opacity: 0;
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-transform: translate3d(-50%,-50%,0) rotateZ(0deg);
+        transform: translate3d(-50%,-50%,0) rotateZ(0deg);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-transform: translate3d(-50%,-50%,0) rotateZ(360deg);
+        transform: translate3d(-50%,-50%,0) rotateZ(360deg);
+    }
+}
+
+@-webkit-keyframes reverseRotate {
+    0% {
+        opacity: 0;
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-transform: translate3d(-50%,-50%,0) scale(0,0) rotateZ(0deg);
+        transform: translate3d(-50%,-50%,0) scale(0,0) rotateZ(0deg);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-transform: translate3d(-50%,-50%,0) scale(1,1) rotateZ(-360deg);
+        transform: translate3d(-50%,-50%,0) scale(1,1) rotateZ(-360deg);
+    }
+}
+
+@keyframes reverseRotate {
+    0% {
+        opacity: 0;
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-transform: translate3d(-50%,-50%,0) scale(0,0) rotateZ(0deg);
+        transform: translate3d(-50%,-50%,0) scale(0,0) rotateZ(0deg);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-transform: translate3d(-50%,-50%,0) scale(1,1) rotateZ(-360deg);
+        transform: translate3d(-50%,-50%,0) scale(1,1) rotateZ(-360deg);
+    }
+}
+
+@-webkit-keyframes enlarge {
+    0% {
+        -webkit-transform: translate3d(0,-50%,0) scale(0,0);
+        transform: translate3d(0,-50%,0) scale(0,0);
+    }
+    70% {
+        -webkit-transform: translate3d(0,0,0) scale(1,1);
+        transform: translate3d(0,0,0) scale(1,1);
+    }
+    65%{
+        -webkit-transform:scale(1.2,1.2);
+        transform:scale(1.2,1.2);
+    }
+    75%{
+        -webkit-transform:scale(1,1);
+        transform:scale(1,1);
+    }
+    85%{
+        -webkit-transform:scale(1.2,1.2);
+        transform:scale(1.2,1.2);
+    }
+    100%{
+        -webkit-transform:scale(1,1);
+        transform:scale(1,1);
+    }
+}
+
+@keyframes enlarge {
+    0% {
+        -webkit-transform: translate3d(0,-50%,0) scale(0,0);
+        transform: translate3d(0,-50%,0) scale(0,0);
+    }
+    50% {
+        -webkit-transform: translate3d(0,0,0) scale(1,1);
+        transform: translate3d(0,0,0) scale(1,1);
+    }
+    65%{
+        -webkit-transform:scale(1.2,1.2);
+        transform:scale(1.2,1.2);
+    }
+    75%{
+        -webkit-transform:scale(1,1);
+        transform:scale(1,1);
+    }
+    85%{
+        -webkit-transform:scale(1.2,1.2);
+        transform:scale(1.2,1.2);
+    }
+    100%{
+        -webkit-transform:scale(1,1);
+        transform:scale(1,1);
+    }
+}
+
+@-webkit-keyframes jump {
+    0%{
+        transform: rotate(-15deg) rotateZ(0deg) scale(0,0);
+        -webkit-transform: rotate(-15deg) rotateZ(0deg) scale(0,0);
+    }
+
+    1%{
+        transform: rotate(-15deg) rotateZ(0deg) scale(.5,.5);
+        -webkit-transform: rotate(-15deg) rotateZ(0deg) scale(.5,.5);
+    }
+
+    15%{
+        transform: rotate(-15deg) rotateZ(-10deg) scale(.6,.6);
+        -webkit-transform: rotate(-15deg) rotateZ(-10deg) scale(.6,.6);
+    }
+
+    30% {
+        transform: rotate(-15deg) rotateZ(10deg) scale(.8,.8);
+        -webkit-transform: rotate(-15deg) rotateZ(10deg) scale(.8,.8);
+    }
+
+    45% {
+        transform: rotate(-15deg) rotateZ(-10deg) scale(1,1);
+        -webkit-transform: rotate(-15deg) rotateZ(-10deg) scale(1,1);;
+    }
+
+    60%{
+        transform: rotate(-15deg) rotateZ(10deg) scale(1.1,1.1);;
+        -webkit-transform: rotate(-15deg) rotateZ(10deg) scale(1.1,1.1);;
+    }
+
+    75% {
+        transform: rotate(-15deg) rotateZ(-10deg) scale(1.2,1.2);
+        -webkit-transform: rotate(-15deg) rotateZ(-10deg) scale(1.2,1.2);
+    }
+
+    90% {
+        transform: rotate(-15deg) rotateZ(10deg) scale(1.1,1.1);
+        -webkit-transform: rotate(-15deg) rotateZ(10deg) scale(1.1,1.1);
+    }
+
+    100%{
+        transform: rotate(-15deg) rotateZ(0deg) scale(1,1);
+        -webkit-transform: rotate(-15deg) rotateZ(0deg) scale(1,1);
+    }
+}
+
+@keyframes jump {
+    0%{
+        transform: rotate(-15deg) rotateZ(0deg) scale(0,0);
+        -webkit-transform: rotate(-15deg) rotateZ(0deg) scale(0,0);
+    }
+
+    1%{
+        transform: rotate(-15deg) rotateZ(0deg) scale(.5,.5);
+        -webkit-transform: rotate(-15deg) rotateZ(0deg) scale(.5,.5);
+    }
+
+    15%{
+        transform: rotate(-15deg) rotateZ(-10deg) scale(.6,.6);
+        -webkit-transform: rotate(-15deg) rotateZ(-10deg) scale(.6,.6);
+    }
+
+    30% {
+        transform: rotate(-15deg) rotateZ(10deg) scale(.8,.8);
+        -webkit-transform: rotate(-15deg) rotateZ(10deg) scale(.8,.8);
+    }
+
+    45% {
+        transform: rotate(-15deg) rotateZ(-10deg) scale(1,1);
+        -webkit-transform: rotate(-15deg) rotateZ(-10deg) scale(1,1);;
+    }
+
+    60%{
+        transform: rotate(-15deg) rotateZ(10deg) scale(1.1,1.1);;
+        -webkit-transform: rotate(-15deg) rotateZ(10deg) scale(1.1,1.1);;
+    }
+
+    75% {
+        transform: rotate(-15deg) rotateZ(-10deg) scale(1.2,1.2);
+        -webkit-transform: rotate(-15deg) rotateZ(-10deg) scale(1.2,1.2);
+    }
+
+    90% {
+        transform: rotate(-15deg) rotateZ(10deg) scale(1.1,1.1);
+        -webkit-transform: rotate(-15deg) rotateZ(10deg) scale(1.1,1.1);
+    }
+
+    100%{
+        transform: rotate(-15deg) rotateZ(0deg) scale(1,1);
+        -webkit-transform: rotate(-15deg) rotateZ(0deg) scale(1,1);
+    }
+}
+
+@-webkit-keyframes jump2 {
+    0%{
+        transform: rotate(30deg) rotateZ(0deg) scale(0,0);
+        -webkit-transform: rotate(30deg) rotateZ(0deg) scale(0,0);
+    }
+
+    1%{
+        transform: rotate(30deg) rotateZ(0deg) scale(.5,.5);
+        -webkit-transform: rotate(30deg) rotateZ(0deg) scale(.5,.5);
+    }
+
+    15%{
+        transform: rotate(30deg) rotateZ(10deg) scale(.6,.6);
+        -webkit-transform: rotate(30deg) rotateZ(10deg) scale(.6,.6);
+    }
+
+    30% {
+        transform: rotate(30deg) rotateZ(-10deg) scale(.8,.8);
+        -webkit-transform: rotate(30deg) rotateZ(-10deg) scale(.8,.8);
+    }
+
+    45% {
+        transform: rotate(30deg) rotateZ(10deg) scale(1,1);
+        -webkit-transform: rotate(30deg) rotateZ(10deg) scale(1,1);
+    }
+
+    60%{
+        transform: rotate(30deg) rotateZ(-10deg) scale(1.1,1.1);
+        -webkit-transform: rotate(30deg) rotateZ(-10deg) scale(1.1,1.1);
+    }
+
+    75% {
+        transform: rotate(30deg) rotateZ(10deg) scale(1.2,1.2);
+        -webkit-transform: rotate(30deg) rotateZ(10deg) scale(1.2,1.2);
+    }
+
+    90% {
+        transform: rotate(30deg) rotateZ(-10deg) scale(1.1,1.1);
+        -webkit-transform: rotate(30deg) rotateZ(-10deg) scale(1.1,1.1);
+    }
+
+    100%{
+        transform: rotate(30deg) rotateZ(0deg) scale(1,1);
+        -webkit-transform: rotate(30deg) rotateZ(0deg) scale(1,1);
+    }
+}
+
+@keyframes jump2 {
+    0%{
+        transform: rotate(30deg) rotateZ(0deg) scale(0,0);
+        -webkit-transform: rotate(30deg) rotateZ(0deg) scale(0,0);
+    }
+
+    1%{
+        transform: rotate(30deg) rotateZ(0deg) scale(.5,.5);
+        -webkit-transform: rotate(30deg) rotateZ(0deg) scale(.5,.5);
+    }
+
+    15%{
+        transform: rotate(30deg) rotateZ(10deg) scale(.6,.6);
+        -webkit-transform: rotate(30deg) rotateZ(10deg) scale(.6,.6);
+    }
+
+    30% {
+        transform: rotate(30deg) rotateZ(-10deg) scale(.8,.8);
+        -webkit-transform: rotate(30deg) rotateZ(-10deg) scale(.8,.8);
+    }
+
+    45% {
+        transform: rotate(30deg) rotateZ(10deg) scale(1,1);
+        -webkit-transform: rotate(30deg) rotateZ(10deg) scale(1,1);
+    }
+
+    60%{
+        transform: rotate(30deg) rotateZ(-10deg) scale(1.1,1.1);
+        -webkit-transform: rotate(30deg) rotateZ(-10deg) scale(1.1,1.1);
+    }
+
+    75% {
+        transform: rotate(30deg) rotateZ(10deg) scale(1.2,1.2);
+        -webkit-transform: rotate(30deg) rotateZ(10deg) scale(1.2,1.2);
+    }
+
+    90% {
+        transform: rotate(30deg) rotateZ(-10deg) scale(1.1,1.1);
+        -webkit-transform: rotate(30deg) rotateZ(-10deg) scale(1.1,1.1);
+    }
+
+    100%{
+        transform: rotate(30deg) rotateZ(0deg) scale(1,1);
+        -webkit-transform: rotate(30deg) rotateZ(0deg) scale(1,1);
+    }
+}
+
+@keyframes fadeIn{
+    0%{
+        transform: translate3d(0,0,-2000px);
+        -webkit-transform: translate3d(0,0,-2000px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translate3d(0,0,0);
+        -webkit-transform: translate3d(0,0,0);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn{
+    0%{
+        transform: translate3d(0,0,-2000px);
+        -webkit-transform: translate3d(0,0,-2000px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translate3d(0,0,0);
+        -webkit-transform: translate3d(0,0,0);
+        opacity: 1;
+    }
+}
+
+@keyframes rotateFromLeft {
+    0%{
+        transform: scale(0,0) rotate(-360deg);
+        -webkit-transform: scale(0,0) rotate(-360deg);
+    }
+
+    100%{
+        transform: scale(1,1) rotate(0deg);
+        -webkit-transform: scale(1,1) rotate(0deg);
+    }
+}
+
+@-webkit-keyframes rotateFromLeft {
+    0%{
+        transform: scale(0,0) rotate(-360deg);
+        -webkit-transform: scale(0,0) rotate(-360deg);
+    }
+
+    100%{
+        transform: scale(1,1) rotate(0deg);
+        -webkit-transform: scale(1,1) rotate(0deg);
+    }
+}
+
+@keyframes translateFromLeft {
+    0%,60%,75%,90%,to {
+        -webkit-animation-timing-function: cubic-bezier(.215,.61,.355,1);
+        animation-timing-function: cubic-bezier(.215,.61,.355,1)
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-1000px,0,0);
+        transform: translate3d(-1000px,0,0)
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(25px,0,0);
+        transform: translate3d(25px,0,0)
+    }
+
+    75% {
+        -webkit-transform: translate3d(-10px,0,0);
+        transform: translate3d(-10px,0,0)
+    }
+
+    90% {
+        -webkit-transform: translate3d(5px,0,0);
+        transform: translate3d(5px,0,0)
+    }
+
+    to {
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+@-webkit-keyframes translateFromLeft {
+    0%,60%,75%,90%,to {
+        -webkit-animation-timing-function: cubic-bezier(.215,.61,.355,1);
+        animation-timing-function: cubic-bezier(.215,.61,.355,1)
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-1000px,0,0);
+        transform: translate3d(-1000px,0,0)
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(25px,0,0);
+        transform: translate3d(25px,0,0)
+    }
+
+    75% {
+        -webkit-transform: translate3d(-10px,0,0);
+        transform: translate3d(-10px,0,0)
+    }
+
+    90% {
+        -webkit-transform: translate3d(5px,0,0);
+        transform: translate3d(5px,0,0)
+    }
+
+    to {
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+@-webkit-keyframes flip {
+    0% {
+        -webkit-transform: perspective(400px) rotateY(-1turn);
+        transform: perspective(400px) rotateY(-1turn)
+    }
+
+    0%,40% {
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out
+    }
+
+    40% {
+        -webkit-transform: perspective(400px) translateZ(150px) rotateY(-190deg);
+        transform: perspective(400px) translateZ(150px) rotateY(-190deg)
+    }
+
+    50% {
+        -webkit-transform: perspective(400px) translateZ(150px) rotateY(-170deg);
+        transform: perspective(400px) translateZ(150px) rotateY(-170deg)
+    }
+
+    50%,80% {
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in
+    }
+
+    80% {
+        -webkit-transform: perspective(400px) scale3d(.95,.95,.95);
+        transform: perspective(400px) scale3d(.95,.95,.95)
+    }
+
+    to {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in
+    }
+}
+
+@keyframes flip {
+    0% {
+        -webkit-transform: perspective(400px) rotateY(-1turn);
+        transform: perspective(400px) rotateY(-1turn)
+    }
+
+    0%,40% {
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out
+    }
+
+    40% {
+        -webkit-transform: perspective(400px) translateZ(150px) rotateY(-190deg);
+        transform: perspective(400px) translateZ(150px) rotateY(-190deg)
+    }
+
+    50% {
+        -webkit-transform: perspective(400px) translateZ(150px) rotateY(-170deg);
+        transform: perspective(400px) translateZ(150px) rotateY(-170deg)
+    }
+
+    50%,80% {
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in
+    }
+
+    80% {
+        -webkit-transform: perspective(400px) scale3d(.95,.95,.95);
+        transform: perspective(400px) scale3d(.95,.95,.95)
+    }
+
+    to {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in
+    }
+}
+
+@-webkit-keyframes bounceInDown {
+    0%,60%,75%,90%,to {
+        -webkit-animation-timing-function: cubic-bezier(.215,.61,.355,1);
+        animation-timing-function: cubic-bezier(.215,.61,.355,1)
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0,-3000px,0);
+        transform: translate3d(0,-3000px,0)
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0,25px,0);
+        transform: translate3d(0,25px,0)
+    }
+
+    75% {
+        -webkit-transform: translate3d(0,-10px,0);
+        transform: translate3d(0,-10px,0)
+    }
+
+    90% {
+        -webkit-transform: translate3d(0,5px,0);
+        transform: translate3d(0,5px,0)
+    }
+
+    to {
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+@keyframes bounceInDown {
+    0%,60%,75%,90%,to {
+        -webkit-animation-timing-function: cubic-bezier(.215,.61,.355,1);
+        animation-timing-function: cubic-bezier(.215,.61,.355,1)
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0,-3000px,0);
+        transform: translate3d(0,-3000px,0)
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0,25px,0);
+        transform: translate3d(0,25px,0)
+    }
+
+    75% {
+        -webkit-transform: translate3d(0,-10px,0);
+        transform: translate3d(0,-10px,0)
+    }
+
+    90% {
+        -webkit-transform: translate3d(0,5px,0);
+        transform: translate3d(0,5px,0)
+    }
+
+    to {
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+@-webkit-keyframes fadeInUpBig {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0,2000px,0);
+        transform: translate3d(0,2000px,0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+@keyframes fadeInUpBig {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0,2000px,0);
+        transform: translate3d(0,2000px,0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+@-webkit-keyframes fadeInRightBig {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(2000px,0,0);
+        transform: translate3d(2000px,0,0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+@keyframes fadeInRightBig {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(2000px,0,0);
+        transform: translate3d(2000px,0,0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+@-webkit-keyframes swing {
+    0% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1)
+    }
+
+    10%,20% {
+        -webkit-transform: scale3d(.9,.9,.9) rotate(-3deg);
+        transform: scale3d(.9,.9,.9) rotate(-3deg)
+    }
+
+    30%,50%,70%,90% {
+        -webkit-transform: scale3d(1.1,1.1,1.1) rotate(3deg);
+        transform: scale3d(1.1,1.1,1.1) rotate(3deg)
+    }
+
+    40%,60%,80% {
+        -webkit-transform: scale3d(1.1,1.1,1.1) rotate(-3deg);
+        transform: scale3d(1.1,1.1,1.1) rotate(-3deg)
+    }
+
+    to {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1)
+    }
+}
+
+@keyframes swing {
+    0% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1)
+    }
+
+    10%,20% {
+        -webkit-transform: scale3d(.9,.9,.9) rotate(-3deg);
+        transform: scale3d(.9,.9,.9) rotate(-3deg)
+    }
+
+    30%,50%,70%,90% {
+        -webkit-transform: scale3d(1.1,1.1,1.1) rotate(3deg);
+        transform: scale3d(1.1,1.1,1.1) rotate(3deg)
+    }
+
+    40%,60%,80% {
+        -webkit-transform: scale3d(1.1,1.1,1.1) rotate(-3deg);
+        transform: scale3d(1.1,1.1,1.1) rotate(-3deg)
+    }
+
+    to {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1)
+    }
+}
+
+@-webkit-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0,-100%,0);
+        transform: translate3d(0,-100%,0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0,-100%,0);
+        transform: translate3d(0,-100%,0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+.stage-3d{
+    perspective: 200px;
+    -webkit-perspective: 200px;
+}
+
+.animate-05{
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+}
+
+.animate-1s {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.backwards{
+    -webkit-animation-fill-mode: backwards;
+    animation-fill-mode: backwards;
+}
+
+.forwards{
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.both{
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.infinite {
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite
+}

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>熊峰&余盼婚礼请柬</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <link rel="stylesheet" type="text/css" href="./css/jquery.fullPage.css" />
+    <link rel="stylesheet" type="text/css" href="./css/base.css" />
+    <script type="text/javascript" src="./js/jquery.js"></script>
+
+    <script type="text/javascript" src="./js/jquery.fullPage.js"></script>
+
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=HCzmc4huncRYgCQphQgg22eBG1HNct4G"></script>
+
+    <script type="text/javascript">
+
+        var img_list = ['1-cover','1-flower','2','2-bg','3-man','3-woman','4-down','4-up','5-left',
+            '5-right','5-up','6-right','6-up','7-bg','8-we','heart-1',
+            'heart-4','musicon','sy','train','up'];
+
+
+        function loadImg(imgArr, callback) {
+            var len = imgArr.length;
+            if (len <= 0)return callback(1, []);
+            var loaded = 0;
+            var imgList = [];
+            var loadFun = function (evt) {
+                var type = {
+                    "load": 1,
+                    "error": 2
+                }[evt.type];
+                if (type === 1) {
+                    if (loaded < len) {
+                        ++loaded;
+                        callback(loaded / len, imgList);
+                    }
+                } else {
+                    this.src = this.src;
+                }
+            };
+            for (var i = 0; i < len; i++) {
+                imgList[i] = {};
+                imgList[i].imageObject = new Image;
+                imgList[i].imageObject.onload = function () {
+                    loadFun.call(this, {
+                        type: "load"
+                    })
+                };
+                imgList[i].imageObject.onerror = function () {
+                    loadFun.call(this, {
+                        type: "error"
+                    })
+                };
+                imgList[i].imageObject.src = imgArr[i];
+            }
+        };
+
+        $(function () {
+
+            for(var j=0; j<img_list.length; j++){
+                img_list[j] = 'http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/'+img_list[j]+".png";
+            }
+
+            loadImg(img_list,function (o) {
+                if(o === 1){
+                    $('body').removeClass("body-hide1");
+                }
+            });
+
+            $('#fullpage').fullpage({
+                scrollOverflow: true,
+                continuousVertical: true,
+                onLeave:function (index,nextIndex,direction) {
+                    pageManage[nextIndex-1]&&pageManage[nextIndex-1]();
+                    if(nextIndex-1!=6){
+                        document.querySelector(".leaf-scene").style.display = "none";
+                        pageManage.pageData[nextIndex-1]&&cancelAnimationFrame(pageManage.pageData[nextIndex-1].interval);
+                    }
+                },
+                afterRender: function() {
+                },
+                afterLoad: function(anchorLink,index) {
+                }
+            });
+            LEAFS.init();
+            var imageObject = {};
+            imageObject.imageObject = new Image;
+            imageObject.imageObject.src = "http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/7-bg.png";
+            imageObject.imageObject.onload = function(){
+                imageObject.imgClipData = {};
+                imgResponseAsBg(imageObject);
+                imageObject.imgClipData.x = -parseInt(imageObject.imgClipData.width*6/7 - window.innerWidth*6/7);
+                $(".page7-bg").css("background","url(" + imageObject.imageObject.src + ") no-repeat "
+                        + imageObject.imgClipData.x + "px " + imageObject.imgClipData.y + "px/"
+                        + imageObject.imgClipData.width + "px " + imageObject.imgClipData.height + "px")
+            }
+
+            var timer,windowHeight=window.innerHeight,windowHeightHasKeyboard;
+            $('input').click(function(event){
+                if($(event.target).closest('#section8').is($("#section8"))){
+                    window.onresize = function(){
+                        clearTimeout(timer);
+                        timer = setTimeout(function(){
+                            if(windowHeight>window.innerHeight&&document.hasFocus()){
+                                windowHeightHasKeyboard = window.innerHeight;
+                            }else{
+                                document.querySelector('#section8').scrollIntoView(true);
+                            }
+                        },100);
+                    }
+                }else{
+                    window.onresize = null;
+                }
+            });
+
+        });
+
+        function imgResponseAsBg(imageObject) {
+            if (Object.prototype.toString.call(imageObject) === "[object Object]") {
+                var img = imageObject.imageObject;
+                imageObject.imgClipData = {};
+                //canvas background 自适应
+                if (img.width / img.height >= window.innerWidth / window.innerHeight) {
+                   imageObject.imgClipData.width = parseInt(window.innerHeight * img.width / img.height);
+                   imageObject.imgClipData.height = window.innerHeight;
+                   imageObject.imgClipData.x = -(imageObject.imgClipData.width - window.innerWidth) / 2;
+                   imageObject.imgClipData.y = 0;
+                } else {
+                   imageObject.imgClipData.width = window.innerWidth;
+                   imageObject.imgClipData.height = parseInt(window.innerWidth * img.height / img.width);
+                   imageObject.imgClipData.x = 0;
+                   imageObject.imgClipData.y = -(imageObject.imgClipData.height - window.innerHeight) / 2;
+                }
+            }
+        }
+
+        var pageManage = {
+            "1":function(){
+                if($(".page2-bg>.center-obj>svg")){
+                    $(".page2-bg>.center-obj>svg").remove();
+                }
+                $(".page2-bg>.center-obj").prepend('<svg class="page2-svg" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="none" x="0px" y="0px" width="320px" height="200px" viewBox="0 0 320 200"> <g> <animateMotion path="M 30 141 Q 59.35 116.65 112.6 86.4 139.25 71.25 160 61 L 164 59.4Q 169 57.5 174 56.25 190 52.25 200 56 204 57.5 212.65 60.65 220.35 63.8 226.75 67.9 244.1 78.95 261 103" begin="0s" dur="5s" rotate="auto-reverse" fill="freeze"/> <image href="./image/train.png" height="40" width="40"/> </g> <path stroke="#ffffff" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" fill="none" d="M 30 141 Q 59.35 116.65 112.6 86.4 139.25 71.25 160 61 L 164 59.4Q 169 57.5 174 56.25 190 52.25 200 56 204 57.5 212.65 60.65 220.35 63.8 226.75 67.9 244.1 78.95 261 103"/> <text font-family="weddingFont" font-size="12" fill="#fff" y="160" x="25" opacity="0">孝感 <animate attributeName="opacity" from="0" to="1" begin="0s" dur="2s" fill="freeze"/> </text> <text font-family="weddingFont" font-size="12" fill="#fff" y="80" x="165" opacity="0">合肥 <animate attributeName="opacity" from="0" to="1" begin="2s" dur="1.5s" fill="freeze"/> </text> <text font-family="weddingFont" font-size="12" fill="#fff" y="125" x="260" opacity="0">上海 <animate attributeName="opacity" from="0" to="1" begin="3.5s" dur="1.5s" fill="freeze"/></text></svg>')
+//                var path = document.querySelector('path');
+//                var length = path.getTotalLength();
+//                $("path").css("stroke-dasharray",length);
+//                $("path").css("stroke-dashoffset",length);
+                var date = new Date();
+                var month = date.getMonth()>=9?date.getMonth()+1:"0"+(date.getMonth()+1);
+                //$(".page2-month").text(month);
+                clearInterval(this.pageData[1].interval);
+                var memorialDay = new Date("2010/12/06");
+                var diffDay = parseInt(Math.abs(date.getTime() - memorialDay.getTime()) / 1000 / 60 / 60 /24);
+
+                var inputContent = "", inputContentArr = ["2010.12.06","从孝感、合肥、到上海",diffDay+"天","一路有你","不负时光"];
+                var j = 0, i = 0;
+                this.pageData[1].interval = setInterval(function () {
+                    var textArr = inputContentArr[j].split("");
+                    inputContent += textArr[i];
+                    $(".page2-context").html(inputContent+(i & 1? '_' : ''));
+                    if(i>=textArr.length-1){
+                        inputContent += "</br>";
+                        i = 0;
+                        j++;
+                        if(j>=inputContentArr.length){
+                            clearInterval(this.pageData[1].interval);
+                            $(".page2-context").html(inputContent);
+                        }
+                    }else{
+                        i++;
+                    }
+                }.bind(this),250);
+            },
+            "6": function () {
+                document.querySelector(".leaf-scene").style.display = "block";
+                !function leafAnimate(){
+                    LEAFS.render();
+                    this.pageData.interval = requestAnimationFrame(leafAnimate.bind(this));
+                }.apply(this);
+            },
+            pageData:{
+                "1":{
+                    interval:null
+                },
+                "6":{
+                    interval:null
+                }
+            }
+        }
+
+        var wishSubmited = false;
+
+        function submitWish(){
+            if(wishSubmited){
+                return false;
+            }
+
+            if(isEmpty($("input[name=phone]").val())||$("input[name=phone]").val().length<11){
+                alert("手机号长度为11位！");
+                return false;
+            }
+
+            if(isEmpty($("input[name=userName]").val())||!isChineseName($("input[name=userName]").val())){
+                alert("姓名需为中文！");
+                return false;
+            }
+
+            if(isEmpty($("input[name=wish]").val())){
+                alert("祝福不能为空！");
+                return false;
+            }
+
+
+
+            $.ajax({
+                url:"http://118.31.238.116:8080/Demo/bestWishToXiongfengAndYupan",
+                contentType:"application/json",
+                async:true,
+                data:JSON.stringify({
+                    content:$("input[name=wish]").val().toString().trim(),
+                    phone:$("input[name=phone]").val().toString().trim(),
+                    name:$("input[name=userName]").val().toString().trim()
+                }),
+                type:"POST",
+                success:function(res){
+                    wishSubmited = true;
+                    $(".page8-button").text("已提交");
+                    $(".page8-button").css("border-color",'rbg(60,60,60)');
+                    $(".page8-button").css("color",'rbg(60,60,60)');
+                }
+            });
+        }
+
+        function isEmpty(obj) {
+            if (obj == null || obj == undefined || ("" + obj) == "") {
+                return true;
+            }
+            return false;
+        }
+
+        function isChineseName(str) {
+            var temp =  str.toString().trim();
+            //如果是中文，且名称是2~4位，则为正式的名称
+            if((""+temp).length>1&&(""+temp).length<5&&isChinese(temp)){
+                return true;
+            }
+            return false;
+        }
+
+        function isChinese(str) {
+            var temp = str.toString().trim();
+            if(isEmpty(temp)) return false;
+            for(var i=0;i<temp.length;i++){
+                var tempChar = temp[i];
+                if (escape(tempChar).indexOf("%u") < 0) return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body class="body-hide1 body-hide2">
+<div class="wishes forwards"></div>
+<script>
+    window.addEventListener("load",function(){
+        $('body').removeClass("body-hide2");
+
+        $.ajax({
+            url:"http://118.31.238.116:8080/Demo/allBestWishToXiongfengAndYupan",
+            contentType:"application/json",
+            async:true,
+            type:"POST",
+            success:function(res){
+                for(var i = 0; i < res.length; i++){
+                    $(".wishes").append("<span>"+res[i].content+"</span>");
+                }
+                $(".wishes").css("-webkit-animation-duration",parseInt($(".wishes").width()/20)+1+"s");
+                $(".wishes").css("animation-duration",parseInt($(".wishes").width()/20)+1+"s");
+                $(".wishes").addClass("scroll");
+//            var w = window.innerWidth;
+//            setInterval(function(){
+//                $(".wishes").css("transform","translate3d("+w+"px,0,0");
+//                if(w<-document.querySelector(".wishes").clientWidth){
+//                    w = window.innerWidth;
+//                }
+//                w--;
+//            },50);
+            }
+        });
+    })
+</script>
+<div id="fullpage">
+    <div class="section active" id="section1">
+        <div class="section-bg page1-bg">
+            <div class="center-obj">
+                <div class="page1-title backwards">Our Wedding Day</div>
+                <div class="page1-flower center both">
+                </div>
+                <img class="page1-cover center both" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/1-cover.png" alt=""/>
+                <div class="page1-date backwards">2018.05.20</div>
+                <div class="page1-name backwards">熊峰<span>❤</span>余盼</div>
+                <div class="page1-content backwards">我们结婚了</div>
+            </div>
+        </div>
+        <div class="bottom-icon fadeInUp animate-1s infinite"></div>
+    </div>
+    <div class="section" id="section2">
+        <div class="section-bg page2-bg">
+            <div class="center-obj">
+                <div class="page2-context">
+                </div>
+                <img src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/heart-1.png" class="page-2-heart-1 page-2-heart-1-jump backwards" alt=""/>
+                <img src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/heart-4.png" class="page-2-heart-2 page-2-heart-2-jump backwards" alt=""/>
+            </div>
+        </div>
+        <div class="bottom-icon fadeInUp animate-1s infinite"></div>
+    </div>
+    <div class="section" id="section3">
+        <div class="section-bg">
+            <div class="center-obj stage-3d">
+                <div class="page3-left-word">
+                    <div class="animate-05 page3-fadeIn forwards">看</div>
+                    <div class="animate-05 page3-fadeIn forwards">见</div>
+                    <div class="animate-05 page3-fadeIn forwards">彼</div>
+                    <div class="animate-05 page3-fadeIn forwards">此</div>
+                </div>
+                <div class="page3-right-word">
+                    <div class="animate-05 page3-fadeIn forwards">即</div>
+                    <div class="animate-05 page3-fadeIn forwards">是</div>
+                    <div class="animate-05 page3-fadeIn forwards">青</div>
+                    <div class="animate-05 page3-fadeIn forwards">春</div>
+                </div>
+                <img src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/3-man.png" alt="" class="page3-man page3-fadeIn both"/>
+                <img src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/3-woman.png" alt="" class="page3-woman page3-fadeIn both"/>
+            </div>
+        </div>
+        <div class="bottom-icon fadeInUp animate-1s infinite"></div>
+    </div>
+    <div class="section" id="section4">
+        <div class="section-bg page4-bg" >
+            <!--<div class="center-obj" >-->
+                <img class="page4-up both" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/4-up.png"/>
+                <div class="page4-text both">最美不过青春年少时<br/>遇到你</div>
+                <img class="page4-down both" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/4-down.png" />
+            <!--</div>-->
+        </div>
+        <div class="bottom-icon fadeInUp animate-1s infinite"></div>
+    </div>
+    <div class="section" id="section5">
+        <div class="section-bg page5-bg">
+            <!--<div class="center-obj">-->
+            <img class="page5-up page5-flip forwards" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/5-up.png"/>
+            <div class="page5-text both">人生之旅 有你处处是风景</div>
+            <img class="page5-left page5-flip forwards" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/5-left.png"/>
+            <img class="page5-right page5-flip forwards"src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/5-right.png"/>
+            <!--</div>-->
+        </div>
+        <div class="bottom-icon fadeInUp animate-1s infinite"></div>
+    </div>
+    <div class="section" id="section6">
+        <div class="section-bg page6-bg">
+            <!--<div class="center-obj">-->
+            <img class="page6-up both" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/6-up.png"/>
+            <div class="page6-text">
+                <div class="backwards">似<br/>水<br/>流<br/>年<br/>，<br/>&nbsp<br/>&nbsp<br/>&nbsp<br/>&nbsp</div>
+                <div class="backwards">带<br/>不<br/>走<br/>我<br/>们<br/>的<br/>芳<br/>华</div>
+            </div>
+            <img class="page6-right both"src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/6-right.png"/>
+            <!--</div>-->
+        </div>
+        <div class="bottom-icon fadeInUp animate-1s infinite"></div>
+    </div>
+    <div class="section" id="section7">
+        <div class="section-bg page7-bg">
+            <!--<div class="center-obj">-->
+                <div class="falling-leaves"></div>
+            <!--</div>-->
+        </div>
+        <div class="bottom-icon fadeInUp animate-1s infinite"></div>
+    </div>
+    <div class="section" id="section8">
+        <div class="section-bg">
+            <div class="center-obj">
+                <div class="page8-title">Say to Us</div>
+                <img class="page8-we backwards" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/8-we.png"/>
+                <input class="page8-input fade-in-down backwards" type="tel" placeholder="手机号" maxlength="11" name="phone"/>
+                <input class="page8-input fade-in-down backwards" type="text" placeholder="姓名" maxlength="4" name="userName"/>
+                <input class="page8-input fade-in-down backwards" type="text" placeholder="祝福" name="wish"/>
+                <div class="page8-button fade-in-down backwards" onclick="submitWish()">提交</div>
+            </div>
+        </div>
+        <div class="bottom-icon fadeInUp animate-1s infinite"></div>
+    </div>
+    <div class="section" id="section9">
+        <div class="section-bg">
+            <div class="center-obj">
+                <div class="center page9-location" id="location"></div>
+                <div id="page9-date" class="align-center page9-time fade-in-down backwards">2018.05.20</div>
+                <div id="page9-address" class="align-center page9-address fade-in-down backwards"></div>
+                <div class="page9-contact fade-in-down backwards box">
+                    <div class="box-1" onclick="window.location.href='tel:15956995352'">联系新郎</div>
+                    <div class="box-1" onclick="window.location.href='tel:15256097949'">联系新娘</div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-icon fadeInUp animate-1s infinite"></div>
+    </div>
+
+</div>
+<audio id="music" src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/audio/ifYouBecomeWind.mp3" autoplay="autoplay" loop="loop"></audio>
+<script>
+    var isPlaying = true;
+    var music = document.getElementById("music");
+
+    function musicController(){
+        if(isPlaying){
+            music.pause();
+            $(".audio_btn").removeClass("play");
+        }else{
+            music.play();
+            $(".audio_btn").addClass("play");
+        }
+        isPlaying = !isPlaying;
+    }
+
+</script>
+<div class="audio_btn play" onclick="musicController()"><img src="http://itzhao.oss-cn-beijing.aliyuncs.com/marriage/image/musicon.png"></div>
+<script src="./js/leaf.js"></script>
+<script>
+
+    locationNavgation("孝感市汉川市金华天商务酒店","孝感市","#page9-address","location");
+
+    if(window.location.href.indexOf("bride")>-1){
+        $("#section9").before('<div class="section" id="section10" >\n' +
+            '        <div class="section-bg">\n' +
+            '            <div class="center-obj">\n' +
+            '                <div class="center page9-location" id="location2"></div>\n' +
+            '                <div id="page10-date"  class="align-center page9-time fade-in-down backwards">2018.05.19</div>\n' +
+            '                <div id="page10-address" class="align-center page9-address fade-in-down backwards"></div>\n' +
+            '                <div class="page9-contact fade-in-down backwards box">\n' +
+            '                    <div class="box-1" onclick="window.location.href=\'tel:15956995352\'">联系新郎</div>\n' +
+            '                    <div class="box-1" onclick="window.location.href=\'tel:15256097949\'">联系新娘</div>\n' +
+            '                </div>\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '        <div class="bottom-icon fadeInUp animate-1s infinite"></div>\n' +
+            '    </div>');
+        locationNavgation("武汉市黄陂区天河街还建房101栋","武汉市","#page10-address","location2");
+    }
+
+    function locationNavgation(hotelLocation,cityLocation,textElement,mapId){
+        var text = "<span onclick=window.location.href='http://api.map.baidu.com/geocoder?address="+hotelLocation+"&output=html'>"+hotelLocation+"<br/>(点击导航)</span>"
+        $(textElement).html(text);
+
+        // 百度地图API功能
+        var map = new BMap.Map(mapId);
+
+        // 创建地址解析器实例
+        var myGeo = new BMap.Geocoder();
+        // 将地址解析结果显示在地图上,并调整地图视野
+        myGeo.getPoint(hotelLocation, function(point){
+            if (point) {
+                map.centerAndZoom(point, 20);
+                map.addOverlay(new BMap.Marker(point));
+            }
+        }, cityLocation);
+    }
+</script>
+<!--<div>-->
+    <!--孝感市汉川市金华天商务酒店武汉市黄陂区天河街还建房101栋-->
+    <!--"2010.12.06","从孝感、合肥、到上海",diffDay+"天","一路有你","不负时光"-->
+<!--</div>-->
+</body>
+</html>
